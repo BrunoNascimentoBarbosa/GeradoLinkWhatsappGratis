@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+     
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Gerador de link para</title>
+  </head>
+  <style>
+    body{
+    background-color: #4AA984;
+
+}
+h1{
+    color: white;
+
+}
+
+h5,h4{
+    color:#fafafa;
+
+}
+p {
+    color: #fafafa;
+
+}
+
+#link-what {
+    display: none;
+      
+}
+
+#valorDigitado{
+    color: white;
+    width: 70%;
+    height: 40px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: black;
+
+}
+
+#img-what{
+    margin-top: -5px;
+    border-radius: 10px;
+
+}
+#banner {
+     width: 400px;
+     border-radius:10px;
+      
+}
+
+#logo-what{
+    width: 80px;
+
+}
+
+#texto-div {
+    margin-top: -600px;
+    margin-left: 220px;
+
+}
+
+#texto {
+    font-size: 10px;
+
+}
+
+.counter{
+    text-align: center;
+    font-size: 100px;
+
+}
+
+#bnt {
+    width: 100%;
+     
+}
+#bnt_new_link{
+    display: none;
+
+}
+#copiarLink {
+    width: 20%;
+    margin-left: 10px;
+     
+}
+
+#footer {
+    margin-top: 350px;
+}
+ 
+  </style>
+  <body>
+    
+      <br>
+      <br>
+
+      <div class="container">
+        <div class="container">
+            <div class="row">
+              <div class="col">
+                <h1>Gerador de link Grátis<br> para whatsapp                 <img id="logo-what" src="WhatsApp-Logo.png">
+                </h1>
+        <form >
+        <div id="form_01">
+        <labe for="numero" name="numero"> Qual o seu número?</labe>
+        
+         <input class="form-control"  type="tel" name="telefone" id="telefone" placeholder="(DDD) 0 0000-0000 " aria-label="default input example">
+      
+         <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label" name="msg" id="msg">Mensagem</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Olá me chamo Bruna quero fazer um pedido."></textarea>
+          </div>
+        </div>  
+          <div id="link-what">
+            <hr>
+            <span>Seu link foi gerado com sucesso!</span> 
+            <img src="check-2.png">
+            <br>
+            <input id="valorDigitado" valor="">
+            <button onclick="copiarLink()" type="submit" class="btn btn-primary"> Copiar link</button>
+            </div> 
+         <button id="bnt_new_link" type="submit" class="btn btn-primary">Criar um novo link </button> 
+  
+         <button id="bnt" type="submit" onclick = "capturar(event) " class="btn btn-warning">Criar o link </button>
+          
+     </form>
+
+               </div>
+               <div class="col">
+               <div id="img-what">
+               <img id="banner" src="man.png" class="img-fluid" alt="...">         
+                
+                <div id="texto-div">
+                <h4>Como funciona</h4>
+                <p>1) Insira o nº do WhatsApp Ex: 21 9 7866-8977</p>
+                <p>2) Escreva a mensagem padrão que será exibida</p>
+                <p>3) Clique em Criar meu link.
+                  </p>
+                <p>4) Copie o link e compartilhe.
+                </p>
+                <p>5) Recomendamos fazer um teste.
+                </p>
+              </div>
+               
+             </div>    
+              </div>
+            </div>
+
+
+        
+      </div>
+      
+      <footer id="footer">
+        <hr>
+      <p style="text-align: center;">Desenvolvido | Bruno Nascimento</p>
+      <a href="#">Políticas de Privacidade</a>
+      <p> </p>
+    </footer>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+   <script src="/js/main.js"></script>
+   
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+ 
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  <script> 
+function capturar(e) {
+  e.preventDefault();
+  telefone = document.getElementById('telefone').value;
+  msg = document.getElementById('exampleFormControlTextarea1').value;
+  document.getElementById('link-what').style="display:block";
+  
+  msg_whats = msg.replace(/ /g, "%20");
+  var NewLink = "https://api.whatsapp.com/send?phone=";
+  var linkGerado = NewLink + "55"+ telefone + "&text=" + msg_whats ;
+  
+
+  console.log(telefone + msg + NewLink);
+
+  document.getElementById('valorDigitado').value = linkGerado;
+
+  document.getElementById('form_01').style="display:none";
+   document.getElementById('bnt').style="display:none";
+ //document.getElementById('valorDigitado').innerHTML = linkGerado;
+
+}
+
+function copiarLink() {
+  let copiar = document.getElementById("valorDigitado");
+  copiar.select();
+  copiar.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(copiar.value);
+   
+}
+</script>
+
+  </body>
+</html>
+
+
+
+
+ 
